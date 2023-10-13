@@ -17,7 +17,6 @@ const LatexInput = (props: Props) => {
         display: "inline-block",
         width: "50vw",
         height: "100vh",
-       
       }}
       onInput={handleInput}
     />
