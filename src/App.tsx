@@ -4,6 +4,8 @@ import Display from "./comps/Display";
 import LatexInput from "./comps/LatexInput";
 import Keyboard from "./comps/Keyboard";
 
+type Symbol = { nombre: string; comando: string };
+
 function App() {
   const [areaInput, setAreaInput] = useState<string>("");
 
@@ -12,15 +14,17 @@ function App() {
       event.currentTarget.textContent ? event.currentTarget.textContent : ""
     );
 
+  const handleKeyboard = (symbol: Symbol) => {
+    setAreaInput(areaInput + symbol.comando);
+  };
+
   return (
     <div>
-      <button>Source</button>
-      <button>Beutify</button>
       <div style={{ display: "flex" }}>
         <LatexInput onInput={handleInput} />
         <Display content={areaInput} />
       </div>
-      <Keyboard />
+      <Keyboard onInput={handleKeyboard} />
     </div>
   );
 }
